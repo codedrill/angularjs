@@ -1,10 +1,20 @@
-var myApp = angular.module('rex', ['ngMessages', 'ngResource']);
+var myApp = angular.module('rex', ['ngMessages','ngResource']);
 
-myApp.controller('mainController', function($scope, $log, $filter, $resource) {
+myApp.controller('mainController', ['$scope', '$filter', '$timeout', function($scope, $filter, $timeout) {
     
-    console.log($scope.name);
-	$log.log($scope.address);
-	
-	
+    $scope.handle = '';
     
-});
+    $scope.lowercasehandle = function() {
+        return $filter('lowercase')($scope.handle);
+    };
+    
+    
+    $scope.name="atul"
+    $timeout(function() {
+       
+        $scope.name = 'newtwitterhandle';
+        
+        
+    }, 3000);
+    
+}]);
